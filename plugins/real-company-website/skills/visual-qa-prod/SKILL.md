@@ -17,7 +17,7 @@ description: 프로덕션 빌드를 실브라우저(CDP)로 픽셀 계측하는 
 - **겹침**: 두 요소 `getBoundingClientRect()` 교차 면적 — 0이어야 함.
 - **오버플로**: `document.documentElement.scrollWidth === innerWidth` (내부 가로 스크롤 레일은 자체 overflow 컨테이너면 무관). 레이아웃 뷰포트 팽창은 fixed 요소 폭이 늘어나는 부수 신호로도 검출.
 - **스태거/모션**: `getComputedStyle` transition-delay 계단(0/120/240…) + rAF 40ms 간격 opacity 샘플링으로 **순차 등장을 시간축에서 실측**. `Animation.currentTime` 스크럽+`getComputedTiming()`은 백그라운드 탭에서도 신뢰 가능.
-- **CSS 승부**: 기대 스타일이 computed에 실제로 나오는지 — 흔한 패자: transition 단축 속성이 delay 리셋, @layer utilities가 components를 이김, :root에서 var() 간접참조가 굳음, media query 셀렉터 specificity 패배.
+- **CSS 승부**: 기대 스타일이 computed에 실제로 나오는지 — 흔한 패자: transition 단축 속성이 delay 리셋, @layer utilities가 components를 이김, :root에서 var() 간접참조가 굳음, media query 셀렉터 specificity 패배, **서드파티 SDK가 inline style로 position을 덮어써 absolute/inset 크기 지정이 무효화(높이 0 — 네트워크는 전부 200인데 화면은 빈 박스)**. 임베드 위젯은 반드시 computed height>0까지 계측.
 - **타이포/정렬**: fontSize·fontWeight 실측, 중앙 정렬은 뷰포트 중심 대비 오프셋(±수 px), eyebrow≠h1 텍스트 대조.
 - **터치 타깃**: 인터랙션 요소 rect ≥44px.
 - **CLS**: `Page.addScriptToEvaluateOnNewDocument`로 PerformanceObserver(layout-shift, buffered)를 **네비게이션 전에 주입** — 로드 후 주입하면 초기 시프트를 놓친다.
