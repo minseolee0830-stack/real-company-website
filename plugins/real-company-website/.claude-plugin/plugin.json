@@ -1,0 +1,8 @@
+{
+  "name": "real-company-website",
+  "description": "AI스러운 웹사이트를 실제 회사 웹사이트처럼 교정하는 스킬 모음 — 판별 체크리스트, 벤치마크 문법 추출, 프로덕션 실측 QA",
+  "version": "1.0.0",
+  "author": {
+    "name": "minseolee0830-stack"
+  }
+}

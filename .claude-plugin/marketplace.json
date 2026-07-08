@@ -1,0 +1,13 @@
+{
+  "name": "real-company-website",
+  "owner": {
+    "name": "minseolee0830-stack"
+  },
+  "plugins": [
+    {
+      "name": "real-company-website",
+      "source": "./plugins/real-company-website",
+      "description": "AI스러운 웹사이트를 진짜 회사 웹사이트로 교정하는 스킬 3종: de-ai-website(판별·교정), benchmark-design(벤치마크 문법 추출), visual-qa-prod(프로덕션 픽셀 실측 QA)"
+    }
+  ]
+}
