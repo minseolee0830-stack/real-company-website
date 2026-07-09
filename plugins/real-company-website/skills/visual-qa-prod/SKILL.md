@@ -27,6 +27,8 @@ description: 프로덕션 빌드를 실브라우저(CDP)로 픽셀 계측하는 
 
 ## 판정 규칙
 - 항목별 PASS/FAIL + 실측 수치 + 스크린샷(/tmp/<라운드>-qa/). FAIL은 원인 추정(파일:라인)까지.
+- **naturalWidth 함정**: w-디스크립터 srcset에서 naturalWidth는 밀도 보정값(실비트맵÷밀도)이다 — 업스케일 판정은 srcset 후보/최적화 URL의 실제 비트맵 폭으로.
+- **네이티브 dialog는 합성 ESC로 안 닫힌다**(KeyboardEvent dispatch 무효) — keyboard.press('Escape') 실입력으로 검증.
 - 자동 판정이 애매하면 스크린샷 육안을 정본으로. 셀렉터 실수로 인한 오탐은 재검증 후 정정 표기.
 - 알려진 대기 항목(오너 확인 등)은 사전에 제외 목록으로 명시해 소음 제거.
 - 풀페이지 캡처(`captureBeyondViewport`)는 sticky 요소 스티칭 아티팩트가 생길 수 있다 — 판정 근거는 뷰포트 단일 캡처로.
